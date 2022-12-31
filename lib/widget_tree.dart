@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:attendance/helpers/next_screen.dart';
+import 'package:attendance/pages/main_page.dart';
+import 'package:attendance/pages/splash_screen.dart';
 import 'package:attendance/provider/sign_in_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,24 +26,20 @@ class _WidgetTreeState extends State<WidgetTree> {
     final sp = context.read<SignInProvider>();
     super.initState();
     // create a timer of 2 seconds
-    Timer(const Duration(seconds: 1), () {
+    Timer(const Duration(seconds: 3), () {
       sp.isSignedIn == false
           ? nextScreen(context, const LoginPage())
-          : nextScreen(context, const HomePage());
+          : nextScreen(context, const MainPage());
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
-          child: Text('Loading...'),
-          // child: Image(
-          //   image: AssetImage('assets/images/cupertino_activity_indicator.gif'),
-          //   height: 80,
-          //   width: 80,
-          // ),
+          child: SplashScreen(),
         ),
       ),
     );
