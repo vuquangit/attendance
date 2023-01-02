@@ -8,3 +8,7 @@ void nextScreenReplace(context, page) {
   Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => page));
 }
+
+void nextScreenReplaceNamed(context, path) {
+  Navigator.of(context).pushReplacementNamed(path);
+}

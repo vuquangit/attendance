@@ -24,7 +24,10 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[pageCurrentIndex],
+      body: IndexedStack(
+        index: pageCurrentIndex,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.green,
@@ -35,6 +38,7 @@ class _MainPageState extends State<MainPage> {
         // unselectedFontSize: 16,
         // showSelectedLabels: false,
         // showUnselectedLabels: false,
+        mouseCursor: SystemMouseCursors.grab,
         currentIndex: pageCurrentIndex,
         onTap: (index) => setState(() => pageCurrentIndex = index),
         items: const [

@@ -1,5 +1,4 @@
 import 'package:attendance/helpers/next_screen.dart';
-import 'package:attendance/pages/login_page.dart';
 import 'package:attendance/provider/sign_in_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +14,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<void> signOut() async {
     final sp = context.read<SignInProvider>();
     sp.userSignOut();
-    nextScreenReplace(context, const LoginPage());
+    nextScreenReplaceNamed(context, '/login');
   }
 
   Widget _userUid(sp) {

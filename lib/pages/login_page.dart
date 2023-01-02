@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
     // handle after sign in
     handleAfterSignIn() {
       Future.delayed(const Duration(milliseconds: 1000)).then((value) {
-        nextScreenReplace(context, const HomePage());
+        nextScreenReplaceNamed(context, '/main');
       });
     }
 

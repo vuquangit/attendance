@@ -1,16 +1,10 @@
 import 'dart:async';
 
 import 'package:attendance/helpers/next_screen.dart';
-import 'package:attendance/pages/main_page.dart';
-import 'package:attendance/pages/splash_screen.dart';
+import 'package:attendance/pages/splash_page.dart';
 import 'package:attendance/provider/sign_in_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-// import 'auth.dart';
-import 'pages/home_page.dart';
-// import 'pages/login_register_page.dart';
-import 'pages/login_page.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super(key: key);
@@ -28,8 +22,8 @@ class _WidgetTreeState extends State<WidgetTree> {
     // create a timer of 2 seconds
     Timer(const Duration(seconds: 3), () {
       sp.isSignedIn == false
-          ? nextScreen(context, const LoginPage())
-          : nextScreen(context, const MainPage());
+          ? nextScreenReplaceNamed(context, '/login')
+          : nextScreenReplaceNamed(context, '/main');
     });
   }
 
@@ -42,6 +36,15 @@ class _WidgetTreeState extends State<WidgetTree> {
           child: SplashScreen(),
         ),
       ),
+      // body: StreamBuilder<User?>(
+      //     stream: FirebaseAuth.instance.authStateChanges(),
+      //     builder: (context, snapshot) {
+      //       if (!snapshot.hasData) {
+      //         return const HomePage();
+      //       } else {
+      //         return const LoginPage();
+      //       }
+      //     }),
     );
   }
 }
